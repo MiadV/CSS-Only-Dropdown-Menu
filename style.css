@@ -1,0 +1,238 @@
+/*----------  GOOGLE FONTS  ----------*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+/*----------  VARIABLES  ----------*/
+:root {
+  /*----------  COLORS   ----------*/
+  --clr-primary: #00dbde;
+  --clr-secondary: #fc00ff;
+  --clr-text-primary: rgb(20, 20, 20);
+  --clr-text-muted: #969696;
+  --clr-body: #dfe7fd;
+  /*----------  SPACING  ----------*/
+  --nav-bar-height: 65px;
+  /*----------  TYPOGRAPHY  ----------*/
+  --font-family: "Nunito Sans", sans-serif;
+  --fs-lg: 1.5rem;
+  --fs-md: 1.25rem;
+  /* 18px */
+  --fs-sm: 1rem;
+  /* 16px */
+  --fw-md: 600;
+  --fw-bold: 700;
+}
+
+/*----------  CSS BASE  ----------*/
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-md);
+  color: var(--clr-text-primary);
+  background-color: var(--clr-body);
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited,
+a :active {
+  color: var(--clr-text-primary);
+}
+
+/*----------  COMPONENTS  ----------*/
+.container--md {
+  max-width: 80rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+a.btn {
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+a.btn--filled {
+  background-color: var(--clr-primary);
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--clr-primary)), to(var(--clr-secondary)));
+  background-image: linear-gradient(90deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
+  background-size: 200% auto;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+a.btn--filled:hover {
+  background-position: right center;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+/*----------  HEADER  ----------*/
+.header {
+  background-color: white;
+  padding: 0 2rem;
+}
+
+.nav {
+  height: var(--nav-bar-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav__logo {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+}
+
+.nav__links {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* Display Dropdowns on Hover */
+}
+
+.nav__links__item {
+  padding: 0 2rem;
+  /* Add chevron down if its dropdown */
+}
+
+.nav__links__item a {
+  color: var(--clr-text-muted);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.nav__links__item a:hover {
+  color: var(--clr-text-primary);
+}
+
+.nav__links__item > a:after {
+  content: " +";
+}
+
+.nav__links__item > a:only-child:after {
+  content: " ";
+}
+
+.nav__links ul {
+  display: none;
+  /* Hide Dropdowns by Default */
+  position: absolute;
+  top: var(--nav-bar-height);
+  /* the height of the main nav */
+  /* If we dont add this dropdown will close before we hover on it */
+}
+
+.nav__links ul:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-width: 50px;
+  border-color: transparent;
+  top: calc(var(--nav-bar-height) * -1);
+  /* the height of the main nav */
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav__links__item:hover > ul {
+  display: inherit;
+  -webkit-animation-name: fadein;
+          animation-name: fadein;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  z-index: 1;
+}
+
+.nav__links .mega-wrap {
+  position: relative;
+  border-radius: 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  /* arrow on top left */
+}
+
+.nav__links .mega-wrap:before {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-width: 0 16px 12px 16px;
+  border-color: transparent transparent white transparent;
+  top: -12px;
+  left: 20px;
+}
+
+.nav__links .mega-wrap .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 15px;
+  background: white;
+  overflow: hidden;
+}
+
+.nav__links .mega-wrap .content__links {
+  padding: 2rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.nav__links .mega-wrap .content__stat {
+  background-color: var(--clr-primary);
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.nav__links .mega-wrap .content__stat p {
+  padding: 2rem;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: white;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */

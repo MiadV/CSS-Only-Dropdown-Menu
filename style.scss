@@ -1,0 +1,215 @@
+/*----------  GOOGLE FONTS  ----------*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+
+/*----------  VARIABLES  ----------*/
+:root {
+  /*----------  COLORS   ----------*/
+  --clr-primary: #00dbde;
+  --clr-secondary: #fc00ff;
+  --clr-text-primary: rgb(20, 20, 20);
+  --clr-text-muted: #969696;
+  --clr-body: #dfe7fd;
+
+  /*----------  SPACING  ----------*/
+  --nav-bar-height: 65px;
+
+  /*----------  TYPOGRAPHY  ----------*/
+  --font-family: "Nunito Sans", sans-serif;
+  --fs-lg: 1.5rem;
+  --fs-md: 1.25rem; /* 18px */
+  --fw-md: 600;
+  --fw-bold: 700;
+}
+
+/*----------  CSS BASE  ----------*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-md);
+  color: var(--clr-text-primary);
+  background-color: var(--clr-body);
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+
+  &:visited,
+  :active {
+    color: var(--clr-text-primary);
+  }
+}
+
+/*----------  COMPONENTS  ----------*/
+.container {
+  &--md {
+    max-width: 80rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+a.btn {
+  border-radius: 15px;
+  cursor: pointer;
+
+  &--filled {
+    background-color: var(--clr-primary); //fallback
+    background-image: linear-gradient(
+      90deg,
+      var(--clr-primary) 0%,
+      var(--clr-secondary) 100%
+    );
+
+    background-size: 200% auto;
+    color: white;
+    padding: 0.5rem 1.25rem;
+
+    transition: all 0.5s;
+
+    &:hover {
+      background-position: right center;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    }
+  }
+}
+
+/*----------  HEADER  ----------*/
+.header {
+  background-color: white;
+  padding: 0 2rem;
+}
+
+.nav {
+  height: var(--nav-bar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+  }
+
+  &__links {
+    position: relative;
+    display: flex;
+
+    &__item {
+      padding: 0 2rem;
+
+      a {
+        color: var(--clr-text-muted);
+
+        transition: all 0.3s;
+
+        &:hover {
+          color: var(--clr-text-primary);
+        }
+      }
+
+      /* Add chevron down if its dropdown */
+      & > a:after {
+        content: " +";
+      }
+
+      & > a:only-child:after {
+        content: " ";
+      }
+    }
+
+    ul {
+      display: none; /* Hide Dropdowns by Default */
+      position: absolute;
+      top: var(--nav-bar-height); /* the height of the main nav */
+
+      /* If we dont add this dropdown will close before we hover on it */
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        border-style: solid;
+        border-width: 50px;
+        border-color: transparent;
+        top: calc(var(--nav-bar-height) * -1); /* the height of the main nav */
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Display Dropdowns on Hover */
+    &__item:hover > ul {
+      display: inherit;
+      animation-name: fadein;
+      animation-duration: 0.3s;
+      z-index: 1;
+    }
+
+    .mega-wrap {
+      position: relative;
+      border-radius: 15px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+      /* arrow on top left */
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        border-style: solid;
+        border-width: 0 16px 12px 16px;
+        border-color: transparent transparent white transparent;
+        top: -12px;
+        left: 20px;
+      }
+
+      .content {
+        display: flex;
+        border-radius: 15px;
+        background: white;
+
+        overflow: hidden;
+        &__links {
+          padding: 2rem;
+          align-self: center;
+        }
+
+        &__stat {
+          background-color: var(--clr-primary);
+          background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+
+          p {
+            padding: 2rem;
+            justify-self: center;
+            font-size: var(--fs-lg);
+            font-weight: var(--fw-bold);
+            color: white;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

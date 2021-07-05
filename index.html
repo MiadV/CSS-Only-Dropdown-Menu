@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./style.css" />
+    <title>Dropdown Navigation Menu - CSS Only</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav container container--md">
+        <!-- BRANDING -->
+        <a href="/#" class="nav__logo"> Brand Logo </a>
+
+        <!-- NAV MENU -->
+        <ul class="nav__links">
+          <li class="nav__links__item"><a href="#">Home</a></li>
+          <li class="nav__links__item">
+            <a href="#collections">Fetures</a>
+            <!-- START Drop Down -->
+            <ul>
+              <div class="mega-wrap">
+                <div class="content">
+                  <div class="content__links">
+                    <li class="nav__links__item"><a href="#">Feature #1</a></li>
+                    <li class="nav__links__item"><a href="#">Feature #2</a></li>
+                    <li class="nav__links__item"><a href="#">Feature #3</a></li>
+                  </div>
+                  <div class="content__stat">
+                    <p>
+                      30+<br />
+                      Features
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ul>
+            <!-- END Drop Down -->
+          </li>
+          <li class="nav__links__item">
+            <a href="#best-sellers">Pricing</a>
+          </li>
+          <li class="nav__links__item"><a href="#blogs">Contact Us</a></li>
+        </ul>
+
+        <!-- NAV BUTTON -->
+        <a href="#" class="btn btn--filled">Register</a>
+      </nav>
+    </header>
+  </body>
+</html>
